@@ -570,7 +570,7 @@ a:hover {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-family: Pixel;
+  font-family: Primary;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 600;
@@ -830,7 +830,7 @@ a:hover {
 }
 
 .font-primary {
-  font-family: Pixel;
+  font-family: Primary;
 }
 
 .font-sans {
@@ -952,9 +952,9 @@ a:hover {
 }
 
 @font-face {
-  font-family: Pixel;
+  font-family: Primary;
 
-  src: url("fonts/Joystix.otf") format("opentype");
+  src: url("fonts/font.otf") format("opentype");
 }
 
 /* width */
@@ -993,7 +993,7 @@ a:hover {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-family: Pixel;
+  font-family: Primary;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 600;

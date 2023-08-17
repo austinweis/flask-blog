@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="font-primary bg-neutral-800 text-neutral-100">
+    <nav class="z-50 fixed w-full bg-neutral-800 bg-opacity-90 shadow-lg backdrop-blur-sm pl-4 pr-2 lg:pr-8 py-4">
+        <div class="flex justify-between flex-1 items-center">
+            <div class="flex justify-between flex-1">
+                <a class="text-indigo-600 hover:text-indigo-600 font-bold text-2xl -my-4" href="/">
+                    <img class="inline w-16 lg:w-20" src="{{ url_for('static', filename='images/logo.png') }}">
+                    <span class="-ml-4">a.w.</span>
+                </a>
+            
+                <span class="visible md:invisible cursor-pointer">
+                    <img name="menu" onclick="Menu(this)" class="w-8 md:w-0" src="{{ url_for('static', filename='images/ham-menu.png') }}">
+                </span>
+            </div>
+
+            <div id="top_links" class="invisible text-none md:visible md:text-lg ">
+                <a class="ml-2" href="/posts">
+                    [All Posts]
+                </a>
+                <a class="ml-2" href="/about">
+                    [About Me]
+                </a>
+                <a class="ml-2" href="/contact">
+                    [Contact]
+                </a>
+                <a class="ml-2" href="/donate">
+                    [Donate]
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <nav id="side-menu" class="visible w-full flex justify-end relative md:invisible">
+        <div class="transition-transform ease-out-expo duration-300 translate-x-full z-40 bg-neutral-800 bg-opacity-90 shadow-lg backdrop-blur-sm p-4 h-full w-72 fixed">
+            <div class="flex flex-col text-center pt-12 text-2xl">
+                <a class="my-4" href="/posts">
+                    [All Posts]
+                </a>
+                <a class="my-4" href="/about">
+                    [About Me]
+                </a>
+                <a class="my-4" href="/contact">
+                    [Contact]
+                </a>
+                <a class="my-4" href="/donate">
+                    [Donate]
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="font-normal text-base pb-6 pt-20 lg:pt-28 px-8 w-full">
+        <h1>{{ title }}</h1>
+    {% block content %}{% endblock %}
+    </div>
+    <script>
+        menu_icon = "{{ url_for('static', filename='images/ham-menu.png') }}";
+        x_icon = "{{ url_for('static', filename='images/x.png') }}"
+        function Menu(button){
+            let links = document.getElementById('top-links');
+            let menu = document.getElementById('side-menu');
+
+            if (button.name == 'menu') 
+            {
+                button.name = 'close';
+                button.src = x_icon;
+                menu.firstElementChild.classList.remove('translate-x-full')
+                menu.firstElementChild.classList.add('translate-x-0')
+            }
+            else 
+            {
+                button.name = 'menu';
+                button.src = menu_icon;
+                menu.firstElementChild.classList.remove('translate-x-0');
+                menu.firstElementChild.classList.add('translate-x-full')
+
+            }
+        }
+    </script> 
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class=" w-full flex justify-center">
+    <div class="ring-2 ring-indigo-500 rounded-lg p-2 max-w-screen-lg">
+        <article class="font-sans text-lg">
+            {{ body | safe }}
+        </article>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for message in get_flashed_messages(category_filter=('success',)) %}
+    <h2 class="text-green-400 no-underline">{{ message }}</h2>
+{% endfor %}
+<section class="w-full mx-2 p-2 flex flex-col items-center">
+    <h2>
+        Upload Image
+    </h2>
+    <form method="POST" action="{{ url_for('blog.upload_image') }}" enctype="multipart/form-data" class="flex flex-col items-center">
+        <label for="upload-image" class="text-lg">Upload an image here:</label>
+        <input name="image" id="upload-image" accept="image/*" type="file" class="file:btn-primary my-2">
+        <ul>
+            {% for error in get_flashed_messages(category_filter=('file',)) %}
+            <li class="text-red-500 text-center">
+                {{ error }}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Upload" class="btn-primary mt-12">
+    </form>
+
+</section>
+
+<section class="mt-16">
+    <h2>
+        Create Post
+    </h2>
+    <form method="POST" action="{{ url_for('blog.create_post') }}" enctype="multipart/form-data" class="w-full mx-2 p-2 flex flex-col items-center">
+        <label for="post-title" class="text-lg">Name the post here:</label>
+        <input name="title" id="post-title" type="text" value="{{ request.form['title'] }}" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-indigo-500">
+        
+        <label for="post-content" class="text-lg">Upload post here:</label>
+        <input name="file" id="post-content" accept="text/markdown" type="file" class="file:btn-primary my-2">
+        <ul>
+            {% for error in get_flashed_messages(category_filter=('post',)) %}
+            <li class="text-red-500 text-center">
+                {{ error }}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Create" class="btn-primary mt-12">
+    </form>
+</section>
+
+<section class="mt-16">
+    <h2>
+        Delete Post
+    </h2>
+    <form method="POST" id="delete_form" action='{{ url_for("blog.delete_post") }}' class="w-full mx-2 p-2 flex flex-col items-center">
+        <label for="post_select">Select Post to Delete:</label>
+        <select id="post_select" name="id" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-indigo-500">
+            {% for post in posts %}
+            <option value="{{ post['id'] }}">{{ post['title'] }}</option>
+            {% endfor %}
+        </select>
+        <ul>
+            {% for error in get_flashed_messages(category_filter=('delete',)) %}
+            <li class="text-red-500 text-center">
+                {{ error }}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Delete" class="btn-primary mt-12">
+    </form>
+</section>
+{% endblock %}

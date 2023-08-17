@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul class="text-left">
+    {% for post in posts %}
+    <li class="mb-4">
+        <div class="text-base text-neutral-400 inline"> {{ post['created'] + " - "}} </div>
+        <a class="text-xl" href="{{ url_for('blog.view_post', post_id=post['id']) }}">{{ post['title'] }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

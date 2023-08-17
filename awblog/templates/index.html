@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}    
+    <section class="text-center text-2xl flex flex-col lg:justify-center lg:flex-row">
+        <div class="mr-0 lg:mr-16">
+            <h2>Blog Posts:</h2>
+            <ul class="mb-8 lg:mb-0">
+                {% for post in posts[:5] %}
+                    <li class="mb-4">
+                        <div class="text-base text-neutral-400 lg:inline"> {{ post['created'] + " - "}} </div>
+                        <a class="text-xl " href="{{ url_for('blog.view_post', post_id=post['id']) }}">{{ post['title'] }}</a>
+                    </li>
+                {% endfor %}
+                {% if post|count > 9 %}
+                {% for post in posts[-5:] %}
+                <li class="invisible h-0 mt-0 lg:h-auto lg:mb-4 md:visible">
+                    <div class="text-none lg:text-base text-neutral-400 lg:inline"> {{ post['created'] + " - "}} </div>
+                    <a class="text-none lg:text-xl " href="{{ url_for('blog.view_post', post_id=post['id']) }}">{{ post['title'] }}</a>
+                </li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+        </div>
+
+        <div>
+            <div>
+                <h2>Projects:</h2>
+                <ul class="mb-8 lg:mb-24">
+                    <li class="mb-4 text-xl ">
+                        <a href="#">This Website</a>
+                    </li>
+                    <li class="mb-4 text-xl ">
+                        <a href="#">LLaMA.cpp Chat Frontend</a>
+                    </li>
+                    <li class="mb-4 text-xl ">
+                        <a href="#">Android EPUB Reader</a>
+                    </li>
+                    <li class="mb-4 text-xl ">
+                        <a href="#">Roguelike Game</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Other:</h2>
+                <ul class="mb-8">
+                    <li class="mb-4 text-xl">
+                        <a href="#">GitHub</a>
+                    </li>
+                    <li class="mb-4 text-xl">
+                        <a href="#">AniList</a>
+                    </li>
+                    <li class="mb-4 text-xl">
+                        <a href="#">Library</a>
+                    </li>
+                    <li class="mb-4 text-xl">
+                        <a href="#">.files</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>   
+{% endblock %}

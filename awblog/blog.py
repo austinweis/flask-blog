@@ -23,7 +23,7 @@ def index():
     curs = db.execute('SELECT * FROM posts ORDER BY created DESC LIMIT 10')
     posts = curs.fetchall()
 
-    return render_template('index.html', title="Austin's Site", posts=posts)
+    return render_template('index.html', title=current_app.config.get('APP_NAME'), posts=posts)
 
 @bp.route('/post/<int:post_id>')
 def view_post(post_id):

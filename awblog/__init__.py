@@ -7,6 +7,7 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
+        APP_NAME='My Blog',
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'blog.sqlite'),
         ADMIN_PASSWORD=generate_password_hash('dev'),

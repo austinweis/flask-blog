@@ -30,7 +30,7 @@
     </h2>
     <form method="POST" action="{{ url_for('blog.create_post') }}" enctype="multipart/form-data" class="w-full mx-2 p-2 flex flex-col items-center">
         <label for="post-title" class="text-lg">Name the post here:</label>
-        <input name="title" id="post-title" type="text" value="{{ request.form['title'] }}" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-indigo-500">
+        <input name="title" id="post-title" type="text" value="{{ request.form['title'] }}" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-primary">
         
         <label for="post-content" class="text-lg">Upload post here:</label>
         <input name="file" id="post-content" accept="text/markdown" type="file" class="file:btn-primary my-2">
@@ -51,7 +51,7 @@
     </h2>
     <form method="POST" id="delete_form" action='{{ url_for("blog.delete_post") }}' class="w-full mx-2 p-2 flex flex-col items-center">
         <label for="post_select">Select Post to Delete:</label>
-        <select id="post_select" name="id" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-indigo-500">
+        <select id="post_select" name="id" class="font-sans my-4 w-80 bg-neutral-800 ring-1 ring-neutral-500 shadow-lg p-2 text-neutral-100 rounded-lg focus:outline focus:outline-2 focus:outline-primary">
             {% for post in posts %}
             <option value="{{ post['id'] }}">{{ post['title'] }}</option>
             {% endfor %}

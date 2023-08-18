@@ -2,36 +2,41 @@
 <html>
 <head>
     <title>{{ title }}</title>
+    <?xml version="1.0"?>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
-<body class="font-primary bg-neutral-800 text-neutral-100">
-    <nav class="z-50 fixed w-full bg-neutral-800 bg-opacity-90 shadow-lg backdrop-blur-sm pl-4 pr-2 lg:pr-8 py-4">
-        <div class="flex justify-between flex-1 items-center">
-            <div class="flex justify-between flex-1">
-                <a class="text-indigo-600 hover:text-indigo-600 font-bold text-2xl -my-4" href="/">
-                    <img class="inline w-16 lg:w-20" src="{{ url_for('static', filename='images/logo.png') }}">
-                    <span class="-ml-4">a.w.</span>
+<body class="font-sans bg-neutral-800 text-neutral-100 w-full">
+    <nav class="z-50 fixed w-full bg-neutral-800 bg-opacity-90 shadow-lg backdrop-blur-sm px-4 py-4">
+        <div class="flex justify-between items-center max-w-screen-lg mx-auto">
+            <div class="flex justify-between grow">
+                <a class="text-neutral-100 hover:text-neutral-100 font-bold text-2xl" href="/">
+                    <img class="inline w-10" src="{{ url_for('static', filename='images/favicon.png') }}">
+                    <span>My Blog</span>
                 </a>
             
-                <span class="visible md:invisible cursor-pointer">
-                    <img name="menu" onclick="Menu(this)" class="w-8 md:w-0" src="{{ url_for('static', filename='images/ham-menu.png') }}">
+                <span class="visible md:invisible cursor-pointer" onclick="Menu(this.firstElementChild)">
+                    <svg name='open_menu' xmlns="http://www.w3.org/2000/svg"  viewBox="2 2 20 20" width="32px" height="40px" class="fill-primary hover:fill-primary-hover">
+                        <path d="M5,7h2h12c1.1,0,2-0.9,2-2s-0.9-2-2-2H7H5C3.9,3,3,3.9,3,5S3.9,7,5,7z"/>
+                        <path d="M19,10h-3H5c-1.1,0-2,0.9-2,2s0.9,2,2,2h11h3c1.1,0,2-0.9,2-2S20.1,10,19,10z"/>
+                        <path d="M19,17h-6H5c-1.1,0-2,0.9-2,2s0.9,2,2,2h8h6c1.1,0,2-0.9,2-2S20.1,17,19,17z"/>
+                    </svg>
                 </span>
             </div>
 
             <div id="top_links" class="invisible text-none md:visible md:text-lg ">
-                <a class="ml-2" href="/posts">
-                    [All Posts]
+                <a class="ml-0 md:ml-4 text-secondary hover:text-secondary-hover" href="/posts">
+                    All Posts
                 </a>
-                <a class="ml-2" href="/about">
-                    [About Me]
+                <a class="ml-0 md:ml-4 text-secondary hover:text-secondary-hover" href="/about">
+                    About Me
                 </a>
-                <a class="ml-2" href="/contact">
-                    [Contact]
+                <a class="ml-0 md:ml-4 text-secondary hover:text-secondary-hover" href="/contact">
+                    Contact
                 </a>
-                <a class="ml-2" href="/donate">
-                    [Donate]
+                <a class="ml-0 md:ml-4 text-secondary hover:text-secondary-hover" href="/donate">
+                    Donate
                 </a>
             </div>
         </div>
@@ -39,47 +44,60 @@
 
     <nav id="side-menu" class="visible w-full flex justify-end relative md:invisible">
         <div class="transition-transform ease-out-expo duration-300 translate-x-full z-40 bg-neutral-800 bg-opacity-90 shadow-lg backdrop-blur-sm p-4 h-full w-72 fixed">
-            <div class="flex flex-col text-center pt-12 text-2xl">
-                <a class="my-4" href="/posts">
-                    [All Posts]
+            <div class="flex flex-col text-center pt-16 text-2xl">
+                <a class="my-4 text-secondary hover:text-secondary-hover" href="/posts">
+                    All Posts
                 </a>
-                <a class="my-4" href="/about">
-                    [About Me]
+                <a class="my-4 text-secondary hover:text-secondary-hover" href="/about">
+                    About Me
                 </a>
-                <a class="my-4" href="/contact">
-                    [Contact]
+                <a class="my-4 text-secondary hover:text-secondary-hover" href="/contact">
+                    Contact
                 </a>
-                <a class="my-4" href="/donate">
-                    [Donate]
+                <a class="my-4 text-secondary hover:text-secondary-hover" href="/donate">
+                    Donate
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="font-normal text-base pb-6 pt-20 lg:pt-28 px-8 w-full">
+    <div class="font-normal text-base px-4 pb-6 pt-20 lg:pt-28 mx-auto max-w-screen-lg">
         <h1>{{ title }}</h1>
-    {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </div>
     <script>
-        menu_icon = "{{ url_for('static', filename='images/ham-menu.png') }}";
-        x_icon = "{{ url_for('static', filename='images/x.png') }}"
-        function Menu(button){
-            let links = document.getElementById('top-links');
-            let menu = document.getElementById('side-menu');
+        let menu_icon = {
+            'viewBox': '2 2 20 20',
+            'path': 'M5,7h2h12c1.1,0,2-0.9,2-2s-0.9-2-2-2H7H5C3.9,3,3,3.9,3,5S3.9,7,5,7z"/><path d="M19,10h-3H5c-1.1,0-2,0.9-2,2s0.9,2,2,2h11h3c1.1,0,2-0.9,2-2S20.1,10,19,10z"/><path d="M19,17h-6H5c-1.1,0-2,0.9-2,2s0.9,2,2,2h8h6c1.1,0,2-0.9,2-2S20.1,17,19,17z'
+        };
+        let x_icon = {
+            'viewBox': '2 2 26 26',
+            'path': 'M15,3C8.373,3,3,8.373,3,15c0,6.627,5.373,12,12,12s12-5.373,12-12C27,8.373,21.627,3,15,3z M16.414,15 c0,0,3.139,3.139,3.293,3.293c0.391,0.391,0.391,1.024,0,1.414c-0.391,0.391-1.024,0.391-1.414,0C18.139,19.554,15,16.414,15,16.414 s-3.139,3.139-3.293,3.293c-0.391,0.391-1.024,0.391-1.414,0c-0.391-0.391-0.391-1.024,0-1.414C10.446,18.139,13.586,15,13.586,15 s-3.139-3.139-3.293-3.293c-0.391-0.391-0.391-1.024,0-1.414c0.391-0.391,1.024-0.391,1.414,0C11.861,10.446,15,13.586,15,13.586 s3.139-3.139,3.293-3.293c0.391-0.391,1.024-0.391,1.414,0c0.391,0.391,0.391,1.024,0,1.414C19.554,11.861,16.414,15,16.414,15z'
+        };
+        let links = document.getElementById('top-links');
+        let menu = document.getElementById('side-menu');
 
-            if (button.name == 'menu') 
+        function Menu(button){
+            if (button.getAttribute('name') == 'open_menu') 
             {
-                button.name = 'close';
-                button.src = x_icon;
-                menu.firstElementChild.classList.remove('translate-x-full')
-                menu.firstElementChild.classList.add('translate-x-0')
+                button.setAttribute('name', 'close_menu');
+                button.setAttribute('viewBox', x_icon['viewBox']);
+                button.firstElementChild.setAttribute('d', x_icon['path']);
+                button.children[1].classList.add('invisible');
+                button.children[2].classList.add('invisible');
+                menu.firstElementChild.classList.remove('translate-x-full');
+                menu.firstElementChild.classList.add('translate-x-0');
             }
             else 
             {
-                button.name = 'menu';
-                button.src = menu_icon;
+                button.setAttribute('name', 'open_menu');
+                button.setAttribute('viewBox', menu_icon['viewBox']);
+                button.firstElementChild.setAttribute('d', menu_icon['path']);
+                button.children[1].classList.remove('invisible');
+                button.children[2].classList.remove('invisible');
                 menu.firstElementChild.classList.remove('translate-x-0');
-                menu.firstElementChild.classList.add('translate-x-full')
+                menu.firstElementChild.classList.add('translate-x-full');
 
             }
         }

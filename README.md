@@ -44,5 +44,5 @@ flask --app awblog run
 ⚠️ [The default server is NOT reccomended for production](https://flask.palletsprojects.com/en/2.3.x/deploying/)  
 
 ## Gallery
-| ![Screenshot1](https://github.com/austinweis/flask-blog/blob/main/docs/images/blog1.png) | ![Screenshot2](https://github.com/austinweis/flask-blog/blob/main/docs/images/blog2.png) | ![Screenshot3](https://github.com/austinweis/flask-blog/blob/main/docs/images/blog3.png) |
+| ![Screenshot1](https://github.com/austinweis/flask-blog/blob/main/docs/images/screen1.png) | ![Screenshot2](https://github.com/austinweis/flask-blog/blob/main/docs/images/screen2.png) | ![Screenshot3](https://github.com/austinweis/flask-blog/blob/main/docs/images/screen3.png) |
 |---|---|---|

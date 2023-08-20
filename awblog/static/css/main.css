@@ -919,14 +919,14 @@ code {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.ring-indigo-500 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
-}
-
 .ring-neutral-500 {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(115 115 115 / var(--tw-ring-opacity));
+}
+
+.ring-primary {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(80 160 240 / var(--tw-ring-opacity));
 }
 
 .backdrop-blur-sm {
@@ -1020,10 +1020,6 @@ code {
 
 .focus\:outline-2:focus {
   outline-width: 2px;
-}
-
-.focus\:outline-indigo-500:focus {
-  outline-color: #6366f1;
 }
 
 .focus\:outline-primary:focus {
